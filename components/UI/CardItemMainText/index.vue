@@ -22,7 +22,7 @@ const props = defineProps({
     </div>
     <div v-else-if="props.secondTitle && !props.secondText">
       <span class="content-block__title_zinc-500" >{{props.secondTitle}}: </span>
-      <div class="content-block__text_zinc-900">
+      <div class="content-block__text_zinc-900 content-block__text">
         <slot/>
       </div>
     </div>
@@ -43,6 +43,8 @@ const props = defineProps({
       }
     }
     &__text{
+      display: flex;
+      flex-wrap: wrap;
       &_zinc-900{
         @apply text-zinc-900;
       }

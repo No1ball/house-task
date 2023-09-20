@@ -19,7 +19,7 @@ type ItemType = {
                              first-title="Разновидность"
                              second-title="Эпизоды"
     >
-      <NuxtLink v-for="episode in props.item.episodes" to="/episode/1">{{episode}}</NuxtLink>
+      <NuxtLink v-for="episode in props.item.episodes" :to="'/episode/'+episode.split('/').slice(-1)">{{episode}}</NuxtLink>
     </u-i-card-item-main-text>
   </div>
 </template>

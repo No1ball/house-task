@@ -1,7 +1,9 @@
-type Episode = {
+export type Episode = {
     id: number,
     name: string,
     url: string,
+    air_date: string,
+    characters: string[]
 }
 
 type CharacterType = "Alien" | "Human" | string

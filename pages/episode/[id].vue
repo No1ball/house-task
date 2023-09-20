@@ -1,11 +1,24 @@
 <script setup lang="ts">
+import {useCharacter} from "~/store/character";
+
+const router = useRoute()
+const store = useCharacter()
+await store.getEpisodeById(+router.params.id)
 
 </script>
 
 <template>
-  <NuxtLink to="/character/12">Char</NuxtLink>
+  <div class="episode-card">
+    <EpisodeCard :episode="store.episode"/>
+  </div>
 </template>
 
 <style scoped>
-
+.episode-card{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 </style>
