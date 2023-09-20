@@ -1,4 +1,4 @@
-#Firebase
+# Firebase
 https://house-money-task.web.app/
 ## Nuxt 3 Minimal Starter
 
