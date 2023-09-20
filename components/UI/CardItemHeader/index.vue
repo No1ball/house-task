@@ -14,5 +14,6 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
+  @apply text-2xl my-2 border-b-2 border-zinc-200 pb-2;
 }
 </style>

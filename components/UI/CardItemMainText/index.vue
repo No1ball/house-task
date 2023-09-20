@@ -26,7 +26,7 @@ const props = defineProps({
         <slot/>
       </div>
     </div>
-    <div v-if="props.thirdTitle && props.thirdText && !props.secondText && !props.secondTitle">
+    <div v-if="props.thirdTitle && props.thirdText">
       <span class="content-block__title_zinc-500">{{props.thirdTitle}}</span>:
       <span class="content-block__text_zinc-900">{{props.thirdText}}</span>
     </div>

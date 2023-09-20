@@ -5,11 +5,18 @@ type Episode = {
 }
 
 type CharacterType = "Alien" | "Human" | string
+type StatusType = "Alive" | "Dead" | "unknown"
+type LocationType = {
+    name: string,
+    url: string
+}
 
 export type CardItemType = {
     id: number,
     name: string,
-    type: CharacterType,
+    species : CharacterType,
+    location: LocationType,
     imageLink: string,
     episodes: string[],
+    status: StatusType
 }

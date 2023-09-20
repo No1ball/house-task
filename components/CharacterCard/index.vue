@@ -1,11 +1,11 @@
 <script setup lang="ts">
+
 import {CardItemType} from "~/composables/types";
 
 type ItemType = {
   item: CardItemType
 }
-  const props = defineProps<ItemType>()
-
+const props = defineProps<ItemType>()
 </script>
 
 <template>
@@ -18,6 +18,8 @@ type ItemType = {
     <u-i-card-item-main-text :first-text="props.item.species"
                              first-title="Разновидность"
                              second-title="Эпизоды"
+                             third-title="Локация"
+                             :third-text="props.item.location.name"
     >
       <NuxtLink v-for="episode in props.item.episodes" to="/episode/1">{{episode}}</NuxtLink>
     </u-i-card-item-main-text>
@@ -26,14 +28,14 @@ type ItemType = {
 
 <style scoped>
 .card-item{
-  @apply shadow-2xl shadow-zinc-400 bg-white font-black;
-  width: 350px;
-  height: 590px;
+  @apply shadow-2xl shadow-zinc-500 bg-white font-black;
+  width: 450px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 }
 img{
-  margin-top: 5px;
+  margin-top: 10px;
 }
 </style>
