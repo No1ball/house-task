@@ -30,7 +30,7 @@ const props = defineProps<ItemType>()
 .card-item{
   @apply shadow-2xl shadow-zinc-500 bg-white font-black;
   width: 450px;
-  height: 600px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;

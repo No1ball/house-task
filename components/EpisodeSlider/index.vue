@@ -9,9 +9,9 @@ type CharacterItem = {
 let activeIndex = ref(0)
 
 const store = useCharacter()
-await store.fetchCharacters()
+//await store.fetchCharacters()
 const activeEpisode = store.episode
-console.log(activeEpisode.characters[activeIndex.value])
+
 await store.getCharacterById(+(activeEpisode.characters[activeIndex.value]).split('/').slice(-1))
 let actualChar = store.actualChar
 let img = actualChar.imageLink

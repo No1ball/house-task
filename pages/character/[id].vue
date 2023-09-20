@@ -3,7 +3,6 @@ import {useCharacter} from "~/store/character";
 
 const router = useRoute()
 const store = useCharacter();
-await store.fetchCharacters()
 await store.getCharacterById(+router.params.id)
 const character = store.actualChar
 

@@ -7,7 +7,7 @@ type ItemType = {
 }
 const props = defineProps<ItemType>()
 const store = useCharacter()
-await store.fetchCharacters()
+//await store.fetchCharacters()
 store.setActiveEpisode(props.episode)
 </script>
 

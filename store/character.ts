@@ -8,8 +8,8 @@ export const useCharacter = defineStore('character', ()=>{
     const actualChar = ref()
     const searchValue = ref('')
     const selectValue = ref('Alive')
-    const page = ref(1)
-    const count = ref(21)
+    const page = ref(0)
+
     const getEpisodeById = async (id: number) =>{
         try {
             const {data} = await axios.get('https://rickandmortyapi.com/api/episode/' + id)
@@ -34,9 +34,10 @@ export const useCharacter = defineStore('character', ()=>{
     }
     const fetchCharacters = async ()  => {
         try {
+            page.value += 1
             const {data}: any = await axios.get('https://rickandmortyapi.com/api/character',{
                 params:{
-                    page: 2
+                    page: page.value
                 }});
             const newData = setAllCharactersData(data.results)
             characters.value = [...characters.value, ...newData]
@@ -45,10 +46,8 @@ export const useCharacter = defineStore('character', ()=>{
         }
     }
     const getCharacterById = async (id: number) => {
-        //characters.value.filter(item => item.id === id)[0]
         try {
             const {data}: any = await axios.get('https://rickandmortyapi.com/api/character/' + id);
-            console.log(data)
             actualChar.value = {
                 id: data.id,
                 name: data.name,
@@ -74,18 +73,34 @@ export const useCharacter = defineStore('character', ()=>{
             const {data} = await axios.get('https://rickandmortyapi.com/api/character/', {
                 params: {
                     name: name,
-                    status: selectOption
+                    status: selectOption,
                 }
             })
             characters.value =  setAllCharactersData(data.results)
             return characters.value
+
         }catch (e) {
             console.log('ошибка в getFilterArray')
+        }
+    }
+
+
+    const addCharacters = async ()  => {
+        try {
+            page.value = page.value + 1
+            const {data}: any = await axios.get('https://rickandmortyapi.com/api/character/',{
+                params:{
+                    page: page.value
+                }});
+            const newData = setAllCharactersData(data.results)
+            characters.value = [...characters.value, ...newData]
+        }catch (e) {
+            console.log('ошибка fetchCharacters')
         }
     }
     return {
         characters, fetchCharacters, getCharacterById,
         episode, getEpisodeById, setActiveEpisode, actualChar, searchValue,
-        selectValue, getFilterArray
+        selectValue, getFilterArray, page, addCharacters
     }
-});
+}, {persist: true});
