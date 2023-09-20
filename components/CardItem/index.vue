@@ -27,8 +27,8 @@ type ItemType = {
 <style scoped>
 .card-item{
   @apply shadow-2xl shadow-zinc-400 bg-white font-black;
-  width: 350px;
-  height: 590px;
+  width: 420px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;

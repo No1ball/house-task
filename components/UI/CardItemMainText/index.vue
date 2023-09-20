@@ -38,15 +38,16 @@ const props = defineProps({
       @apply font-sans mx-2;
 
     &__title{
+
       &_zinc-500 {
-        @apply font-medium text-xl text-zinc-500;
+        @apply font-medium text-2xl text-zinc-950;
       }
     }
     &__text{
       display: flex;
       flex-wrap: wrap;
       &_zinc-900{
-        @apply text-zinc-900;
+        @apply text-neutral-500 text-lg;
       }
     }
   }

@@ -10,6 +10,7 @@
 <template>
   <div class="card-list">
     <card-item v-for="item in props.characters" :="{item}" key="item.id"/>
+    <div></div>
   </div>
 </template>
 
@@ -19,9 +20,10 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 1150px;
+  width: 1350px;
   column-gap: 25px;
   row-gap: 40px;
   min-height: 100vh;
+  margin-top: 20px;
 }
 </style>

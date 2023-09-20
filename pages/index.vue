@@ -3,19 +3,28 @@
 
   const store = useCharacter();
   await store.fetchCharacters()
-
+  const array = computed(() => {
+      (async () => {
+        await store.getFilterArray(store.searchValue, store.selectValue)
+      })()
+      return store.characters
+    })
 </script>
 
 <template>
   <div class="center-block">
-    <CardList :characters="store.characters"/>
+    <div>
+      <CardFilter/>
+      <CardList :characters="array"/>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .center-block{
-  width: 100vw;
+  @apply w-full;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

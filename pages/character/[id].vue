@@ -4,7 +4,8 @@ import {useCharacter} from "~/store/character";
 const router = useRoute()
 const store = useCharacter();
 await store.fetchCharacters()
-const character = store.getCharacterById(+router.params.id)
+await store.getCharacterById(+router.params.id)
+const character = store.actualChar
 
 </script>
 

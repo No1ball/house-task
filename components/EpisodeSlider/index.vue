@@ -11,9 +11,17 @@ let activeIndex = ref(0)
 const store = useCharacter()
 await store.fetchCharacters()
 const activeEpisode = store.episode
+console.log(activeEpisode.characters[activeIndex.value])
+await store.getCharacterById(+(activeEpisode.characters[activeIndex.value]).split('/').slice(-1))
+let actualChar = store.actualChar
+let img = actualChar.imageLink
+watch(async () => {
+  await store.getCharacterById(+(activeEpisode.characters[activeIndex.value]).split('/').slice(-1))
+  img = store.actualChar.imageLink
 
-function clickHandler (type: "prev" | "next"){
+}, [activeIndex.value, store.actualChar])
 
+async function clickHandler (type: "prev" | "next"){
   switch (type){
     case "prev":
       return activeIndex.value !== 0 ? activeIndex.value -= 1 : activeIndex.value = activeEpisode.characters.length-1;
@@ -30,9 +38,8 @@ function clickHandler (type: "prev" | "next"){
     </button>
 
     <div class="slider__center-block">
-      {{activeIndex}}
       <NuxtLink :to="'/character/'+ +activeEpisode.characters[activeIndex].split('/').slice(-1)" >
-        <img :src='store.getCharacterById(+(activeEpisode.characters[activeIndex]).split("/").slice(-1)).imageLink'/>
+        <img :src='img' v-bind="activeIndex"/>
       </NuxtLink>
     </div>
     <button @click="clickHandler('next')">
